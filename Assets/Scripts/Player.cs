@@ -1,10 +1,24 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Player : MonoBehaviour
 {
+    //Singleton Pattern Player
+    public static Player Instance { get; private set; }
+
+
+    public event EventHandler<OnSelectedCounterChangeEventArgs> OnSelectedCounterChange;
+    public class OnSelectedCounterChangeEventArgs : EventArgs
+    {
+        public ClearCounter selectedCounterArgs;
+    }
+
+
+
     [SerializeField] private float movSpeed;
     [SerializeField] private GameInput gameInput;
     [SerializeField] private LayerMask countersLayerMask;
@@ -12,6 +26,15 @@ public class Player : MonoBehaviour
     private bool isWalking;
     private Vector3 lastInteraction;
     private ClearCounter selectedCounter;
+
+    private void Awake()
+    {
+        if (Instance != null)
+        {
+            Debug.Log("Tem mais de uma instância de Jogador");
+        }
+        Instance = this;
+    }
 
 
     private void Start()
@@ -56,17 +79,18 @@ public class Player : MonoBehaviour
             {
                 if (clearCounter != selectedCounter)
                 {
-                    selectedCounter = clearCounter;
+                    SetSelectedCounter(clearCounter);
                 }
             }
             else
             {
-                selectedCounter = null;
+                SetSelectedCounter(null);
+
             }
         }
         else
         {
-            selectedCounter = null;
+            SetSelectedCounter(null);
         }
 
     }
@@ -116,5 +140,15 @@ public class Player : MonoBehaviour
 
         float rotateSpeed = 10f;
         transform.forward = Vector3.Slerp(transform.forward, movDir, Time.deltaTime * rotateSpeed);
+    }
+
+    private void SetSelectedCounter(ClearCounter selectedCounter)
+    {
+        this.selectedCounter = selectedCounter;
+
+        OnSelectedCounterChange?.Invoke(this, new OnSelectedCounterChangeEventArgs
+        {
+            selectedCounterArgs = selectedCounter
+        });
     }
 }

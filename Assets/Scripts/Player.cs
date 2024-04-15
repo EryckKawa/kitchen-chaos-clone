@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -10,6 +11,22 @@ public class Player : MonoBehaviour
 
     private bool isWalking;
     private Vector3 lastInteraction;
+    private ClearCounter selectedCounter;
+
+
+    private void Start()
+    {
+        gameInput.OnInteractAction += GameInput_OnInteractAction;
+    }
+
+    private void GameInput_OnInteractAction(object sende, System.EventArgs e)
+    {
+        if (selectedCounter != null)
+        {
+            selectedCounter.Interact();
+        }
+    }
+
     private void Update()
     {
         HandleMovement();
@@ -31,13 +48,25 @@ public class Player : MonoBehaviour
         {
             lastInteraction = movDir;
         }
+
         float interactDistance = 2f;
         if (Physics.Raycast(transform.position, lastInteraction, out RaycastHit raycastHit, interactDistance, countersLayerMask))
         {
             if (raycastHit.transform.TryGetComponent(out ClearCounter clearCounter))
             {
-                clearCounter.Interact();
+                if (clearCounter != selectedCounter)
+                {
+                    selectedCounter = clearCounter;
+                }
             }
+            else
+            {
+                selectedCounter = null;
+            }
+        }
+        else
+        {
+            selectedCounter = null;
         }
 
     }

@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
 
     private bool isWalking;
     private Vector3 lastInteraction;
+    private ClearCounter selectedCounter;
+
 
     private void Start()
     {
@@ -19,23 +21,10 @@ public class Player : MonoBehaviour
 
     private void GameInput_OnInteractAction(object sende, System.EventArgs e)
     {
-        Vector2 inputVector = gameInput.GetMovementVectorNormalized();
-
-        Vector3 movDir = new Vector3(inputVector.x, 0f, inputVector.y);
-
-        if (movDir != Vector3.zero)
+        if (selectedCounter != null)
         {
-            lastInteraction = movDir;
+            selectedCounter.Interact();
         }
-        float interactDistance = 2f;
-        if (Physics.Raycast(transform.position, lastInteraction, out RaycastHit raycastHit, interactDistance, countersLayerMask))
-        {
-            if (raycastHit.transform.TryGetComponent(out ClearCounter clearCounter))
-            {
-                clearCounter.Interact();
-            }
-        }
-
     }
 
     private void Update()
@@ -59,13 +48,25 @@ public class Player : MonoBehaviour
         {
             lastInteraction = movDir;
         }
+
         float interactDistance = 2f;
         if (Physics.Raycast(transform.position, lastInteraction, out RaycastHit raycastHit, interactDistance, countersLayerMask))
         {
             if (raycastHit.transform.TryGetComponent(out ClearCounter clearCounter))
             {
-                //clearCounter.Interact();
+                if (clearCounter != selectedCounter)
+                {
+                    selectedCounter = clearCounter;
+                }
             }
+            else
+            {
+                selectedCounter = null;
+            }
+        }
+        else
+        {
+            selectedCounter = null;
         }
 
     }

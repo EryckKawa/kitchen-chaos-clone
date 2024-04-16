@@ -592,6 +592,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4265745177726007853, guid: 5782aa52fb4b9fa429d1fc76c47c4534,
+        type: 3}
+      propertyPath: kitchenObjectSO
+      value: 
+      objectReference: {fileID: 11400000, guid: e2198be1c45938442b533d5087eb768d,
+        type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -890,6 +896,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4265745177726007853, guid: 5782aa52fb4b9fa429d1fc76c47c4534,
+        type: 3}
+      propertyPath: tometoPrefab
+      value: 
+      objectReference: {fileID: 7788528122529910003, guid: f74b046ad0bd3324fa7586bb1e97d30a,
+        type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

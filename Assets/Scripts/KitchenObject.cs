@@ -21,7 +21,7 @@ public class KitchenObject : MonoBehaviour
 
         if (kitchenObjectParent.HasKitchenObject())
         {
-            Debug.LogError("Essa bancada já tem um Objeto!");
+            Debug.Log("Essa bancada já tem um Objeto!");
         }
 
         kitchenObjectParent.SetKitchenObject(this);

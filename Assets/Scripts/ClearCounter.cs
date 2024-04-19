@@ -9,6 +9,25 @@ public class ClearCounter : BaseCounter
 
     public override void Interact(Player player)
     {
-        
+        //Bancada Vazia
+        if (!HasKitchenObject())
+        {
+            if (player.HasKitchenObject())
+            {
+                player.GetKitchenObject().SetKitchenObjectParent(this);
+            }
+        }
+        else
+        {
+            //Player carregando objeto
+            if (player.HasKitchenObject())
+            {
+
+            }
+            else
+            {
+                GetKitchenObject().SetKitchenObjectParent(player);
+            }
+        }
     }
 }

@@ -158,7 +158,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 238975492032189952, guid: dda36278560ff994aa91d4e1571a226f,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 4615605341704373334}
+      addedObject: {fileID: 3432284687427648079}
   m_SourcePrefab: {fileID: 100100000, guid: dda36278560ff994aa91d4e1571a226f, type: 3}
 --- !u!4 &4020708154610802027 stripped
 Transform:
@@ -172,7 +172,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 6099930407026554119}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4615605341704373334
+--- !u!114 &3432284687427648079
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -181,11 +181,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 6338337721055027975}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8eab398723aa7e34796cb5177e326e41, type: 3}
+  m_Script: {fileID: 11500000, guid: a26ef3a91d2070348908891a2e110b0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   counterTopPoint: {fileID: 4020708154610802027}
-  cutKitchenObjectSO: {fileID: 11400000, guid: 459ae77f3c60e73478f782ee0e74c038, type: 2}
+  cutRecipeSOArray:
+  - {fileID: 11400000, guid: a1b76cc83859c96408075b861ebd0f15, type: 2}
+  - {fileID: 11400000, guid: dda5dd5fb0daf2e40bacd1c3a64337e0, type: 2}
+  - {fileID: 11400000, guid: 3e86ce0aa3ab88342a01db9ffeeb8d5b, type: 2}
 --- !u!4 &7300167428073910409 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3596170464333071758, guid: dda36278560ff994aa91d4e1571a226f,
@@ -356,7 +359,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9b2ba1dd9097a5458cb75e0534639b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseCounter: {fileID: 4615605341704373334}
+  baseCounter: {fileID: 3432284687427648079}
   visualGameObjectArray:
   - {fileID: 1495298131074329672}
   - {fileID: 3183885182905043105}

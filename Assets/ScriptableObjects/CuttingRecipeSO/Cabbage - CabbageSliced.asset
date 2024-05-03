@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   input: {fileID: 11400000, guid: 73da78f636deb064491d9209379482ce, type: 2}
   output: {fileID: 11400000, guid: 92d31177947fcc143b4dfcba755bf56a, type: 2}
+  cuttingProgressMax: 5
